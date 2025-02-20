@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mpi-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mpi
+  template:
+    metadata:
+      labels:
+        app: mpi
+    spec:
+      containers:
+      - name: mpi-container
+        image: localhost:5000/mpi-image:latest
+        imagePullPolicy: Always
+        command: ["/entrypoint.sh"]
