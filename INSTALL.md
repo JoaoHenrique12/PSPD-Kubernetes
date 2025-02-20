@@ -92,3 +92,16 @@ Feito toda vez que o codigo e alterado
 docker tag mpi-image 192.168.49.2:5000/mpi-image:latest
 docker push 192.168.49.2:5000/mpi-image:latest
 ```
+
+## Metricas
+
+```bash
+# Com isso o dashboard mostra o uso de CPU e memoria dos pods
+minikube -p multinode-cluster addons enable metrics-server
+```
+
+```bash
+# stress test
+sudo apt install stress
+stress --vm 1 --vm-bytes 100M --cpu 1
+```
