@@ -89,6 +89,7 @@ containers:
 Feito toda vez que o codigo e alterado
 
 ```bash
+docker build -t mpi-image .
 docker tag mpi-image 192.168.49.2:5000/mpi-image:latest
 docker push 192.168.49.2:5000/mpi-image:latest
 ```
