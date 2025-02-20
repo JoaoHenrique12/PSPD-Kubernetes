@@ -90,3 +90,17 @@ comuniquem e interajam com o cluster.
 conforme o esperado dentro dos pods.
 - kube-proxy, que é o componente responsável fazer ser possível que os pods e os services se comuniquem 
 entre si e com o mundo externo.
+
+## ReplicaSet
+
+é quem vai criar os Pods que estão dentro do Deployment;
+É possível criar um ReplicaSet sem um Deployment, mas não é uma boa prática;
+
+## DaemonSet
+
+O DaemonSet é muito útil para executar Pods que precisam ser executados em todos
+os nós do cluster, como por exemplo, um Pod que faz o monitoramento de logs, ou um
+Pod que faz o monitoramento de métricas.
+
+- Execução de agentes de monitoramento
+- Execução de um proxy de rede em todos os nós do cluster
