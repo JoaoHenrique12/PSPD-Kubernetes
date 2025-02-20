@@ -53,3 +53,37 @@ minikube ssh
 minikube dashboard
 minikube logs
 ```
+
+```bash
+# Para conseguir publicar imagens no seu proprio servidor local
+# Sem necessidade de subir elas para o docker-hub
+minikube addons enable registry -p multinode-cluster
+```
+
+```bash
+# Altere esta configuracao para permitir que o docker envie imagens
+# para o seu registry local
+sudo nano /etc/docker/daemon.json
+
+IP_REGISTY=192.168.49.2
+
+{
+  "insecure-registries": ["$IP_REGISTY:5000"]
+}
+```
+
+```bash
+# Faca o build da imagen desejada e empurre ela para o registry local
+
+IP_REGISTY=192.168.49.2
+IMAGE_NAME=mpi-image
+
+docker push $IP_REGISTY:5000/$IMAGE_NAME
+```
+
+```bash
+# Indicando o nome da imagem no seu arquivo de Deployment
+containers:
+- name: mpi-container
+  image: localhost:5000/$IMAGE_NAME
+```
