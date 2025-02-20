@@ -39,6 +39,12 @@ minikube delete --purge
 
 minikube start --nodes 2 -p multinode-cluster
 minikube start --nodes 3 --driver=docker -p multinode-cluster
+
+# Caso tenha algum problema com a inicialização do cluster, tente alterar a quantia de recursos de cada pod
+# e o número de dodes
+minikube config set cpus 4
+minikube config set memory 4g
+minikube start --nodes 2 -p multinode-cluster
 ```
 
 ```bash
