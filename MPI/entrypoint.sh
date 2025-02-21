@@ -1,7 +1,7 @@
 #! /bin/sh
 
 /usr/sbin/sshd -D
-# mpirun --allow-run-as-root -np 5 --oversubscribe /MPI/output
+# mpirun --allow-run-as-root /MPI/output input.txt
 #
 # echo "Fim do processamento"
 #
