@@ -19,7 +19,8 @@ RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 EXPOSE 22
 
 # Install MPI things
-RUN apt update && apt install -y openmpi-bin openmpi-common libopenmpi-dev
+RUN apt update 
+RUN apt install -y openmpi-bin openmpi-common libopenmpi-dev g++
 
 
 ENV PATH="/usr/lib/openmpi/bin:${PATH}"
@@ -27,8 +28,9 @@ ENV LD_LIBRARY_PATH="/usr/lib/openmpi/lib:${LD_LIBRARY_PATH}"
 
 WORKDIR /MPI
 
-COPY src/*.c .
+COPY src/*.cpp .
+COPY input.txt .
 COPY entrypoint.sh /
 
-RUN mpicc *.c -o output
+RUN mpic++ *.cpp -o output -fopenmp
 CMD ["/entrypoint.sh"]
