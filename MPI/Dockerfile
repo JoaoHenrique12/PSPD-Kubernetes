@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH="/usr/lib/openmpi/lib:${LD_LIBRARY_PATH}"
 WORKDIR /MPI
 
 COPY src/*.c .
-COPY src/entrypoint.sh /
+COPY entrypoint.sh /
 
 RUN mpicc *.c -o output
 CMD ["/entrypoint.sh"]
